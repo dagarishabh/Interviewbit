@@ -1,0 +1,22 @@
+vector<int> Solution::getRow(int A) {
+    int i,j,k,a[A+1],b[A+1];
+    a[0]=b[0]=a[1]=b[1]=1;
+    for(i=2;i<=A;i++)
+    {
+        a[0]=1;
+        for(j=1;j<i;j++)
+        {
+            a[j]=b[j]+b[j-1];
+        }
+        a[j]=1;
+        for(j=0;j<i+1;j++)
+        b[j]=a[j];
+       // for(j=0;j<i+1;j++)
+       // cout<<a[j]<<" ";
+       // cout<<endl;
+    }
+    vector<int> arr;
+    for(i=0;i<A+1;i++)
+    arr.push_back(a[i]);
+    return arr;
+}
