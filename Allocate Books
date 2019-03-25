@@ -1,0 +1,80 @@
+int Solution::books(vector<int> &A, int B) {
+    if(B>A.size())
+    return -1;
+    long long int i,k,j,s=0,l=0,m,h,maxi,ans=INT_MAX;
+    for(i=0;i<A.size();i++)
+    {
+        s+=A[i];
+    }
+    h=2*s;
+    while(l<h)
+    {
+        maxi=0;
+        m=l+h;
+        m/=2;
+        long long int p=0;
+        k=1;
+        for(i=0;i<A.size();i++)
+        {
+            if(p+A[i]<=m)
+            p+=A[i];
+            else
+            {
+                k++;
+                maxi=max(p,maxi);
+                p=A[i];
+            }
+            
+        }
+        maxi=max(p,maxi);
+      //  cout<<k<<" "<<maxi<<" "<<endl;
+      //  cout<<l<<" "<<h<<" "<<m<<endl;
+        if(k<=B)
+        ans=min(ans,maxi);
+        if(k>B)
+        l=m+1;
+        else
+        h=m-1;
+    }
+    m=h;
+    maxi=0;
+    long long int p=0;
+    k=1;
+    for(i=0;i<A.size();i++)
+    {
+        if(p+A[i]<=m)
+        p+=A[i];
+        else
+        {
+            k++;
+            maxi=max(p,maxi);
+            p=A[i];
+        }
+        
+    }
+    maxi=max(p,maxi);
+   // cout<<k<<" "<<maxi<<" "<<endl;
+   // cout<<l<<" "<<h<<" "<<m<<endl;
+    if(k<=B)
+    ans=min(ans,maxi);
+    m=l;p=0;maxi=0;
+    k=1;
+    for(i=0;i<A.size();i++)
+    {
+        if(p+A[i]<=m)
+        p+=A[i];
+        else
+        {
+            k++;
+            maxi=max(p,maxi);
+            p=A[i];
+        }
+        
+    }
+    maxi=max(p,maxi);
+   // cout<<k<<" "<<maxi<<" "<<endl;
+   // cout<<l<<" "<<h<<" "<<m<<endl;
+    if(k<=B)
+    ans=min(ans,maxi);
+    return ans;
+}
