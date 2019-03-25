@@ -1,0 +1,47 @@
+/**
+ * Definition for an interval.
+ * struct Interval {
+ *     int start;
+ *     int end;
+ *     Interval() : start(0), end(0) {}
+ *     Interval(int s, int e) : start(s), end(e) {}
+ * };
+ */
+bool compare(struct Interval a,struct Interval b)
+{
+    return a.start<b.start;
+}
+vector<Interval> Solution::insert(vector<Interval> &intervals, Interval newInterval) {
+    int i,j,k,s,e;
+    intervals.push_back(newInterval);
+    
+    sort(intervals.begin(),intervals.end(),compare);
+    //for(i=0;i<intervals.size();i++)
+    //cout<<intervals[i].start<< "  "<<intervals[i].end<<endl;
+    
+    vector<Interval> ans;
+    Interval p;
+    for(i=0;i<intervals.size();)
+    {
+        p.start=intervals[i].start;
+        p.end=intervals[i].end;
+        //cout<<p.start<<" "<<p.end<<endl;
+        if(i < intervals.size()-1 && intervals[i].end>=intervals[i+1].start)
+        {
+            //cout<<"entering loop\n";
+            while(i< intervals.size()-1 && p.end>=intervals[i+1].start)
+            {
+                //cout<<intervals[i+1].start<<" "<<intervals[i+1].end<<endl;
+                p.end=max(p.end,intervals[i+1].end);
+               // cout<<p.start<<" is the start"<<endl;
+                //cout<<"changing end "<<p.end<<endl;
+                i++;
+            }
+        }
+        i++;
+        ans.push_back(p);
+        
+        
+    }
+    return ans;
+}
