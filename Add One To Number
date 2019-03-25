@@ -1,0 +1,31 @@
+vector<int> Solution::plusOne(vector<int> &A) {
+    int i,j,k;
+    A[A.size()-1]++;
+    vector<int> b;
+    for(i=A.size()-1;i>0;i--)
+    {
+        if(A[i]>=10)
+        {
+            A[i]-=10;
+            A[i-1]++;
+        }
+        else
+        break;
+    }
+    if(A[0]>=10)
+    {
+        b.push_back(1);
+    }
+    i=0;
+    while(A[i]==0)
+    i++;
+    for(;i<A.size();i++)
+    {
+        if(A[i]>=10)
+        b.push_back(A[i]-10);
+        else
+        b.push_back(A[i]);
+    }
+    return b;
+    
+}
