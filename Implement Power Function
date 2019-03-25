@@ -1,0 +1,18 @@
+int Solution::pow(int x, int n, int d) {
+    int ans=1;
+    if(x==0)
+    return 0;
+    if(n==0)
+    return 1;
+    if(n==1 && x>0)
+    return x%d;
+    else if(n==1 && x<0)
+    return (d+x%d);
+    if(n%2==0)
+    ans=pow((x*1LL*x)%d,n/2,d);
+    else
+    ans=(x*1LL*pow((x*1LL*x)%d,n/2,d))%d;
+    if(ans<0)
+    ans+=d;
+    return ans;
+}
