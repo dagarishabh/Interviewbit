@@ -1,0 +1,29 @@
+int Solution::maximumGap(const vector<int> &A) {
+    int i,k=0,j,m=0;
+    vector<pair<int,int> > vp;
+    for(i=0;i<A.size();i++)
+    {
+        vp.push_back(make_pair(A[i],i));
+    }
+    sort(vp.begin(),vp.end());
+    //for(i=0;i<vp.size();i++)
+   // cout<<vp[i].first<< " "<<vp[i].second<<endl;
+    int a[A.size()];
+    for(i=0;i<A.size();i++)
+    a[i]=A.size()+1;
+    a[0]=vp[0].second;
+   // cout<<a[0]<<endl;
+    for(i=1;i<A.size();i++)
+    {
+        a[i]=min(a[i-1],vp[i].second);
+    }
+   // for(i=0;i<A.size();i++)
+    //cout<<a[i]<<" ";
+   // cout<<endl;
+    for(i=A.size()-1;i>=0;i--)
+    {
+       // cout<<vp[i].second<< " "<<a[i]<<endl;
+        m=max(vp[i].second-a[i],m);
+    }
+    return m;
+}
