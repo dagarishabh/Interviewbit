@@ -1,0 +1,60 @@
+int Solution::search(const vector<int> &a, int b) {
+    int i=0,j=a.size()-1,k=0;
+    while(i<j)
+    {
+        k=i+j;
+        k/=2;
+        if(a[k]>a[i])
+        i=k;
+        else if(a[k]<a[j])
+        j=k;
+        else break;
+    }
+    if(a[i+1]<a[i])
+    k=i;
+    else if(a[j]<a[j-1])
+    k=j;
+    //cout<<k<<endl;
+    if(b>a[a.size()-1])
+    {
+        int l=0,h=k,m;
+        while(l<h)
+        {
+            m=l+h;
+            m/=2;
+           // cout<<"m="<<m<<endl;
+            if(a[m]<b)
+            l=m+1;
+            else if(a[m]>b)
+            h=m-1;
+            else
+            return m;
+            if(a[l]==b)
+            return l;
+            else if(a[h]==b)
+            return h;
+        }
+    }
+    else
+    {
+        int l=k+1,h=a.size(),m;
+        while(l<h)
+        {
+            m=l+h;
+            m/=2;
+            //cout<<"m="<<m<<endl;
+            if(a[m]<b)
+            l=m+1;
+            else if(a[m]>b)
+            h=m-1;
+            else
+            return m;
+            if(a[l]==b)
+            return l;
+            else if(a[h]==b)
+            return h;
+        }
+    }
+    
+    return -1;
+}
