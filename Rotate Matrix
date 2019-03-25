@@ -1,0 +1,43 @@
+void Solution::rotate(vector<vector<int> > &a) {
+   int i,j,k=0,n;
+   n=a.size();
+   for(i=0;i<(n+1)/2;i++)
+   {
+       for(j=i;j<n-i-1;j++)
+       {
+           if(0)
+           {
+              // cout<<"swapping "<<a[i][j]<< " "<<a[n-i-1][j]<<endl;
+               swap(a[i][j],a[n-i-1][j]);
+               //cout<<"swapping "<<a[n-1-i][j]<< " "<<a[n-i-1][n-j-1]<<endl;
+               swap(a[n-i-1][j],a[n-i-1][n-j-1]);
+              // cout<<"swapping "<<a[n-1-i][n-1-j]<< " "<<a[i][n-1-j]<<endl;
+               swap(a[n-i-1][n-j-1],a[i][n-j-1]);
+           }
+           else
+           {
+               //cout<<"swapping "<<a[i][j]<< " "<<a[n-j-1][i]<<endl;
+               swap(a[i][j],a[n-j-1][i]);
+              // cout<<"swapping "<<a[n-j-1][i]<<" "<<a[n-i-1][n-j-1]<<endl;
+               swap(a[n-j-1][i],a[n-i-1][n-j-1]);
+              // cout<<"swapping "<<a[n-1-i][n-1-j]<< " "<<a[j][n-1-i]<<endl;
+               swap(a[n-i-1][n-j-1],a[j][n-1-i]);
+           }
+            
+       }
+      /*for(int i1=0;i1<n;i1++)
+            {
+                for(int j1=0;j1<n;j1++)
+                cout<<a[i1][j1]<< " ";
+                cout<<endl;
+            }
+            cout<<endl;*/
+
+   }
+   /*for(i=0;i<n;i++)
+   {
+       for(j=0;j<n;j++)
+       cout<<a[i][j]<<" ";
+       cout<<endl;
+   }*/
+}
