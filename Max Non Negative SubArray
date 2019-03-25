@@ -1,0 +1,36 @@
+vector<int> Solution::maxset(vector<int> &A) {
+    long long int i,j,k,s=0,ms=0,p,l=0,ml=0;
+    for(i=0;i<A.size();i++)
+    {
+        if(A[i]<0)
+        {
+            s=0;
+            l=0;
+        }
+        else
+        {
+            s+=A[i];
+            l++;
+        }
+        if(ms<s)
+        {
+            ms=s;
+            p=i;
+            ml=l;
+        }
+        else if(ms==s)
+        {
+            if(l>ml)
+            {
+                p=i;
+                ml=l;
+            }
+        }
+    }
+   // cout<<p<<" "<<ml<<endl;
+    vector<int> b;
+    if(ms>=0)
+    for(i=p-ml+1;i<=p;i++)
+    b.push_back(A[i]);
+    return b;
+}
