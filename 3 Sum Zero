@@ -1,0 +1,42 @@
+vector<vector<int> > Solution::threeSum(vector<int> &A) {
+    int i,j,k,s=0,m;
+    vector<vector<int> > ans;
+    if(A.size()==0)
+    return ans;
+    vector<int> p;
+    sort(A.begin(),A.end());
+    
+    //for(i=0;i<A.size();i++)
+    //cout<<A[i]<<" ";
+    //cout<<endl;
+    ans.clear();
+    for(i=0;i<A.size()-1;)
+    {
+        s=A[i];
+        for(j=i+1;j<A.size()-1;)
+        {
+            s+=A[j];
+            s*=(-1);
+            k=lower_bound(A.begin()+j+1,A.end(),s)-A.begin();
+            if(k<A.size() && k>j && A[k]==s)
+            {
+                p.push_back(A[i]);
+                p.push_back(A[j]);
+                p.push_back(A[k]);
+                ans.push_back(p);
+                p.clear();
+            }
+            s*=(-1);
+            s-=A[j];
+            m=A[j];
+            while(j<A.size() && A[j]==m)
+            j++;
+            //if(A[i]==-2)
+           // cout<<j<<endl;
+        }
+        m=A[i];
+        while(i<A.size() && A[i]==m)
+        i++;
+    }
+    return ans;
+}
