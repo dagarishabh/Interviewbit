@@ -1,0 +1,18 @@
+int Solution::removeDuplicates(vector<int> &a) {
+    int i,j,p,k;
+    k=1;
+    j=1;
+    i=0;
+    p=a[0];
+    while(i<a.size())
+    {
+        if(a[i]!=p)
+        {
+            swap(a[j],a[i]);
+            p=a[j];
+            j++;
+        }
+        i++;
+    }
+    return j;
+}
